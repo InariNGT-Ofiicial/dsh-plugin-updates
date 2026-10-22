@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  offline:
+    name: offline (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+      - name: Check syntax
+        run: npm run check
+      - name: Offline tests
+        run: npm test
+      - name: Check distribution contents
+        shell: bash
+        run: |
+          mkdir -p dist
+          npm pack --pack-destination dist
+          package_file=$(node -p "'dsh-plugin-updates-' + require('./package.json').version + '.tgz'")
+          node scripts/verify-package.mjs "dist/$package_file"

@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  checks:
+    uses: ./.github/workflows/ci.yml
+  publish:
+    needs: checks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+      - name: Verify tag and create package
+        shell: bash
+        run: |
+          node scripts/verify-release.mjs "$GITHUB_REF_NAME"
+          mkdir -p dist
+          npm pack --pack-destination dist
+          package_file=$(node -p "'dsh-plugin-updates-' + require('./package.json').version + '.tgz'")
+          node scripts/verify-package.mjs "dist/$package_file"
+          (cd dist && sha256sum "$package_file" > SHA256SUMS.txt)
+      - name: Publish tested package and checksum
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          package_file=$(node -p "'dsh-plugin-updates-' + require('./package.json').version + '.tgz'")
+          gh release create "$GITHUB_REF_NAME" --verify-tag --draft --title "DSH 插件自动更新 $GITHUB_REF_NAME" --notes-file docs/RELEASE.md
+          gh release upload "$GITHUB_REF_NAME" "dist/$package_file" dist/SHA256SUMS.txt
+          gh release edit "$GITHUB_REF_NAME" --draft=false --latest
