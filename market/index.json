@@ -1,0 +1,62 @@
+{
+  "format": 1,
+  "title": {
+    "en": "Inari DSH Plugins",
+    "zh": "Inari 的 DSH 插件"
+  },
+  "description": {
+    "en": "Release-pinned plugins maintained by InariNGT-Ofiicial.",
+    "zh": "由 InariNGT-Ofiicial 维护，安装源固定到已发布版本提交。"
+  },
+  "metadata": {
+    "categories": {
+      "automation": {
+        "title": {
+          "en": "Automation",
+          "zh": "自动化"
+        }
+      }
+    }
+  },
+  "plugins": [
+    {
+      "name": "dsh-plugin-updates",
+      "title": {
+        "en": "Plugin Updates",
+        "zh": "插件自动更新"
+      },
+      "description": {
+        "en": "Check installed plugins against their original GitHub repositories. Automatic updates are on by default every 24 hours; the interval and install switch are adjustable.",
+        "zh": "按已安装插件的原 GitHub 仓库检查更新，默认每 24 小时自动更新，支持手动设置检查周期与自动安装开关。"
+      },
+      "author": "InariNGT-Ofiicial",
+      "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4IiBmaWxsPSJub25lIj4KICA8cmVjdCB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgcng9IjMwIiBmaWxsPSIjRTBFREZGIi8+CiAgPHBhdGggZD0iTTQwIDMySDcwTDg3IDQ5VjkzSDQwVjMyWiIgZmlsbD0iI0YyRjdGRCIgc3Ryb2tlPSIjMTgzNDUyIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8cGF0aCBkPSJNNzAgMzJWNDlIODdNNTEgNjFINzJNNTEgNzJINjciIHN0cm9rZT0iIzE4MzQ1MiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8cGF0aCBkPSJNOTUgNzdBMzEgMzEgMCAwIDEgNDIgMTAxTTMzIDgyQTMxIDMxIDAgMCAxIDg2IDU4IiBzdHJva2U9IiMyMjY0RDIiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTgzIDQzTDg4IDU5TDcyIDYyTTU2IDk5TDQwIDEwMEw0MSA4NCIgc3Ryb2tlPSIjMjI2NEQyIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K",
+      "homepage": "https://github.com/InariNGT-Ofiicial/dsh-plugin-updates#readme",
+      "repository": {
+        "url": "https://github.com/InariNGT-Ofiicial/dsh-plugin-updates"
+      },
+      "metadata": {
+        "category": "automation",
+        "keywords": [
+          "dsh-plugin",
+          "github",
+          "updates"
+        ]
+      },
+      "versions": [
+        {
+          "version": "0.2.2",
+          "publishTimestamp": 1792723794,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/InariNGT-Ofiicial/dsh-plugin-updates",
+            "commit": "51723aa968cfa5a42ccd993402b59cc53e70b501"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.2 <0.3.0"
+          }
+        }
+      ]
+    }
+  ]
+}
