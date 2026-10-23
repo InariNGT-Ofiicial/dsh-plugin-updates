@@ -14,5 +14,5 @@ for(const [name,bytes] of archive.files){
   assert(allowed.has(name)||allowed.has(name.split('/')[0]),`Unexpected package path: ${name}`);
   assert.deepEqual(bytes,await readFile(join(root,name)),`Package differs from source: ${name}`);
 }
-for(const name of ['index.js','cordis.patch.yml','lib/updater.mjs','lib/inventory.mjs','vendor/semver/LICENSE','README.md','LICENSE'])assert(archive.files.has(name),`Missing ${name}`);
+for(const name of ['index.js','cordis.patch.yml','lib/updater.mjs','lib/inventory.mjs','vendor/semver/LICENSE','README.md','LICENSE','icon.svg','locale/en.json','locale/zh.json'])assert(archive.files.has(name),`Missing ${name}`);
 console.log(JSON.stringify({passed:true,version:pkg.version,files:archive.files.size,sha256:archive.sha256}));

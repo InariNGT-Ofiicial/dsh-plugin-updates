@@ -1,28 +1,25 @@
-# DSH 插件自动更新 v0.2.1
+# DSH 插件自动更新 v0.2.2
 
-首次公开 GitHub Release，支持直接安装及后续自动更新。默认自动更新开启，每 24 小时复查；人工间隔、开关、暂停和立即执行接口均保留。
+本次补齐插件市场与插件管理展示适配。默认开启自动更新、每 24 小时检查、手动设置周期和安装开关均保持原有行为，人工设置继续保留。
 
 ## 安装
 
 ```powershell
-dsh plugin --profile desktop add https://github.com/InariNGT-Ofiicial/dsh-plugin-updates/releases/download/v0.2.1/dsh-plugin-updates-0.2.1.tgz
+dsh plugin --profile desktop add https://github.com/InariNGT-Ofiicial/dsh-plugin-updates/releases/download/v0.2.2/dsh-plugin-updates-0.2.2.tgz
 ```
 
-桌面版命令未加入 PATH 时，也可把上述 Release URL 交给桌面版内置 CLI，或下载 `.tgz` 后安装。需要 Node.js 24+、DSH 0.2.1-rc.2。安装后重新加载对应 profile。
+需要 Node.js 24+、DSH 0.2.1-rc.2。安装后重新加载对应 profile。
 
-## 内容
+## 市场适配
 
-- 自动发现已安装插件的原 GitHub 仓库，核对包名和版本。
-- 通过官方 DSH CLI 安装精确版本，保留配置与启用状态。
-- 安装前备份旧包和 profile 文件，失败时尝试回退，异常结果持久化。
-- 本地 HTML / JSON 报告、检查时间设置与自动更新开关。
-- 本插件声明自己的 GitHub 来源，安装此版后可发现后续正式 Release。
+- 增加导出的中英文名称与说明、作者和内嵌可用的蓝白图标。
+- 提供 DSH format 1 自定义市场索引：
+  https://raw.githubusercontent.com/InariNGT-Ofiicial/dsh-plugin-updates/main/market/index.json
+- 市场安装固定到本版本的 Git 提交；Release 公开后工作流刷新索引。
+- 未安装可选 Discover 的用户仍使用上面的 Release 安装；本说明不表示已被第三方精选市场收录。
 
 ## 验证与范围
 
-- 离线测试覆盖版本比较、来源、下载边界、缓存、备份、回退及人工设置。
-- 已在 DSH 0.2.1-rc.2 的隔离 profile 验证实际安装、合成插件自动升级及重启后加载；该场景使用合成 GitHub 响应。
-- 实际 GitHub 发布包下载和自身升级验证另在发布后进行，结果以仓库验证说明及交付记录为准，不提前视为已完成。
-- 本地开发链接、仅分支版本以及缺少可安装包的多包仓库会标记原因。安装脚本保持关闭；安装完成不等于插件业务功能已重新验收。自动更新不会自动重启 DSH。
+运行 JavaScript 语法、离线测试、包内逐文件审计；市场格式和展示信息另使用 DSH 0.2.1-rc.2 本地原生读取器验证。上一版已完成真实 GitHub 发布包的自身升级与隔离宿主重启验证。本次不改变自动安装逻辑，也不等同于对全部第三方插件业务功能重新验收。
 
-附件包含安装包与 `SHA256SUMS.txt`。GitHub 自动提供对应标签的源码归档。
+附件包含可直接安装的版本化 `.tgz` 与 SHA256SUMS.txt。安装完成后需要重新加载或重启 DSH，不自动重启。

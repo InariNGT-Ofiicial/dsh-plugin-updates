@@ -1,8 +1,8 @@
-# DSH 插件自动更新 · 0.2.1
+# DSH 插件自动更新 · 0.2.2
 
 原生 DSH 插件，连接已安装插件的原 GitHub 仓库，**默认开启自动更新，每 24 小时检查一次**。检查和安装直接使用程序与官方 DSH CLI，不发起模型调用。
 
-[最新 Release](https://github.com/InariNGT-Ofiicial/dsh-plugin-updates/releases/latest) · [安装包 v0.2.1](https://github.com/InariNGT-Ofiicial/dsh-plugin-updates/releases/download/v0.2.1/dsh-plugin-updates-0.2.1.tgz) · [问题反馈](https://github.com/InariNGT-Ofiicial/dsh-plugin-updates/issues)
+[最新 Release](https://github.com/InariNGT-Ofiicial/dsh-plugin-updates/releases/latest) · [安装包 v0.2.2](https://github.com/InariNGT-Ofiicial/dsh-plugin-updates/releases/download/v0.2.2/dsh-plugin-updates-0.2.2.tgz) · [问题反馈](https://github.com/InariNGT-Ofiicial/dsh-plugin-updates/issues)
 
 首次启动延迟 15 秒；重启读取上次检查时间，未到期不会重复检查。默认覆盖同一 DSH 主目录下所有 profile 的直接安装插件，包含未启用的安装条目。更新保留它们原有的启用状态。更新安装完成后，在对应 profile 重新加载或重启时生效；插件不会自动重启 DSH。
 
@@ -11,18 +11,28 @@
 需要 Node.js 24+、DSH 0.2.1-rc.2。可直接安装 Release URL，无需构建：
 
 ```powershell
-dsh plugin --profile desktop add https://github.com/InariNGT-Ofiicial/dsh-plugin-updates/releases/download/v0.2.1/dsh-plugin-updates-0.2.1.tgz
+dsh plugin --profile desktop add https://github.com/InariNGT-Ofiicial/dsh-plugin-updates/releases/download/v0.2.2/dsh-plugin-updates-0.2.2.tgz
 ```
 
 桌面版命令未加入 PATH 时：
 
 ```powershell
-& 'D:\DSH\resources\runtime\cli\bin\dsh.cmd' plugin --profile desktop add https://github.com/InariNGT-Ofiicial/dsh-plugin-updates/releases/download/v0.2.1/dsh-plugin-updates-0.2.1.tgz
+& 'D:\DSH\resources\runtime\cli\bin\dsh.cmd' plugin --profile desktop add https://github.com/InariNGT-Ofiicial/dsh-plugin-updates/releases/download/v0.2.2/dsh-plugin-updates-0.2.2.tgz
 ```
 
 也可从 Release 下载 `.tgz` 后通过本地路径安装。命令安装后重新加载或重启 DSH。旧版的检查时间设置会保留，已有人工设置仍优先于默认值。
 
 本插件的 `package.json.repository` 指向本仓库，通过 Release URL 或下载包安装后，也会检查自己的后续正式 Release。默认排除预发布；升级安装本插件后需要重新加载才能运行新版代码。
+
+## 插件市场适配
+
+v0.2.2 已提供中英文标题、说明、作者和蓝白更新图标，兼容 DSH 插件管理展示。支持 format 1 自定义索引的市场可添加：
+
+```text
+https://raw.githubusercontent.com/InariNGT-Ofiicial/dsh-plugin-updates/main/market/index.json
+```
+
+搜索“插件自动更新”，核对作者与原仓库后安装。索引固定到已发布 Git 提交，后续 Release 自动刷新。不同版本的 Discover 属于可选功能；没有该页面时仍可直接安装 Release 包。第三方精选市场是否默认收录由其维护者决定，详见 [市场安装说明](docs/MARKET.md)。
 
 ## 在 DSH 对话中人工控制
 
