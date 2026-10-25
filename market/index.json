@@ -45,12 +45,12 @@
       },
       "versions": [
         {
-          "version": "0.2.2",
-          "publishTimestamp": 1792723794,
+          "version": "0.2.3",
+          "publishTimestamp": 1792900919,
           "source": {
             "type": "git",
             "url": "https://github.com/InariNGT-Ofiicial/dsh-plugin-updates",
-            "commit": "51723aa968cfa5a42ccd993402b59cc53e70b501"
+            "commit": "87fa103ee6866371fc57b752ac8de7faf053fb86"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
