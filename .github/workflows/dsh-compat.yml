@@ -1,0 +1,32 @@
+name: DSH compatibility
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  native-host:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        dsh: [0.2.1-rc.2, 0.2.1-rc.3]
+    runs-on: ${{ matrix.os }}
+    env:
+      DSH_TEST_VERSION: ${{ matrix.dsh }}
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: node scripts/install-dsh-test-host.mjs ${{ matrix.dsh }}
+      - name: Test the packed distribution
+        shell: bash
+        run: |
+          mkdir -p work/packed
+          npm pack --ignore-scripts --pack-destination work/packed
+          tar -xzf work/packed/*.tgz -C work/packed
+          node --input-type=module -e 'import fs from "node:fs"; import path from "node:path"; fs.appendFileSync(process.env.GITHUB_ENV, "DSH_TEST_PLUGIN_ROOT=" + path.resolve("work/packed/package") + "\n")'
+      - run: node scripts/test-dsh-host.mjs
