@@ -1,3 +1,17 @@
+# 插件自动更新 v0.2.3
+
+正式版本，同时支持 **DSH 0.2.1-rc.2 与 0.2.1-rc.3**。原有配置、工具名和人工设置保持兼容，无需宿主版本豁免。
+
+DSH peer 同时接受 rc.2 / rc.3。保留默认开启自动更新、24 小时检查、持久人工开关、来源核验、备份和回退。
+
+Windows / Linux × rc.2 / rc.3 的原生宿主兼容 CI 通过；本轮触发的原有回归 CI 全部通过。本地安装包还经过两个官方 npm 运行时及已安装 rc.3 Desktop 内置模块验证。
+
+附件包含可安装的 `.tgz` 和 `SHA256SUMS.txt`。安装到实际使用的同一 profile 后重新加载插件或重启 DSH。外部 Python 工程、科研软件及模型按 README 单独准备。
+
+本次兼容验收未运行 GPU 训练/翻唱、模型 API 或真实平台写入；宿主模块测试不代表 Desktop UI 全业务验收。验证边界与复现见 [DSH_COMPATIBILITY.md](docs/DSH_COMPATIBILITY.md)。
+
+<details><summary>前版及维护说明</summary>
+
 # v0.2.3 — DSH rc.2 / rc.3 兼容维护
 
 同时保留新旧宿主支持，更新安装声明与 peer 范围；增加两版官方宿主的发行包回归。不改变业务工具、配置或人工设置。验证边界见 [DSH_COMPATIBILITY.md](DSH_COMPATIBILITY.md)。
@@ -29,5 +43,7 @@ dsh plugin --profile desktop add https://github.com/InariNGT-Ofiicial/dsh-plugin
 运行 JavaScript 语法、离线测试、包内逐文件审计；市场格式和展示信息另使用 DSH 0.2.1-rc.2 本地原生读取器验证。上一版已完成真实 GitHub 发布包的自身升级与隔离宿主重启验证。本次不改变自动安装逻辑，也不等同于对全部第三方插件业务功能重新验收。
 
 附件包含可直接安装的版本化 `.tgz` 与 SHA256SUMS.txt。安装完成后需要重新加载或重启 DSH，不自动重启。
+
+</details>
 
 </details>
