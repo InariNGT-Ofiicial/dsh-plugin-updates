@@ -1,3 +1,9 @@
+# v0.2.3 — DSH rc.2 / rc.3 兼容维护
+
+同时保留新旧宿主支持，更新安装声明与 peer 范围；增加两版官方宿主的发行包回归。不改变业务工具、配置或人工设置。验证边界见 [DSH_COMPATIBILITY.md](DSH_COMPATIBILITY.md)。
+
+<details><summary>前版发布说明</summary>
+
 # DSH 插件自动更新 v0.2.2
 
 本次补齐插件市场与插件管理展示适配。默认开启自动更新、每 24 小时检查、手动设置周期和安装开关均保持原有行为，人工设置继续保留。
@@ -23,3 +29,5 @@ dsh plugin --profile desktop add https://github.com/InariNGT-Ofiicial/dsh-plugin
 运行 JavaScript 语法、离线测试、包内逐文件审计；市场格式和展示信息另使用 DSH 0.2.1-rc.2 本地原生读取器验证。上一版已完成真实 GitHub 发布包的自身升级与隔离宿主重启验证。本次不改变自动安装逻辑，也不等同于对全部第三方插件业务功能重新验收。
 
 附件包含可直接安装的版本化 `.tgz` 与 SHA256SUMS.txt。安装完成后需要重新加载或重启 DSH，不自动重启。
+
+</details>
